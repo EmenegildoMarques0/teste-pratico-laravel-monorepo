@@ -29,13 +29,16 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
-            "Modules\\User\\": "Modules/User/app/"
+            "Modules\\User\\": "Modules/User/app/",
+            "Modules\\Task\\": "Modules/Task/app/"
         }
     },
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/",
-            "Modules\\User\\Tests\\": "Modules/User/tests/"
+            "Modules\\User\\Tests\\": "Modules/User/tests/",
+            "Modules\\Task\\Tests\\": "Modules/Task/tests/"
+            
         }
     },
     "scripts": {
