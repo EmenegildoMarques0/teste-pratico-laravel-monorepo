@@ -1,0 +1,72 @@
+openapi: 3.0.0
+info:
+  title: API Usuários
+  version: 1.0.0
+paths:
+  /api/users:
+    get:
+      summary: Listar todos os usuários
+      tags:
+        - Usuários
+      responses:
+        '200':
+          description: Lista de usuários
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+        '500':
+          description: Erro interno
+    post:
+      summary: Criar um novo usuário
+      tags:
+        - Usuários
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - email
+                - password
+                - password_confirmation
+              properties:
+                name:
+                  type: string
+                  example: João Silva
+                email:
+                  type: string
+                  format: email
+                  example: joao@example.com
+                password:
+                  type: string
+                  format: password
+                  example: 12345678
+                password_confirmation:
+                  type: string
+                  format: password
+                  example: 12345678
+      responses:
+        '201':
+          description: Usuário criado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Usuário criado com sucesso!
+                  data:
+                    $ref: '#/components/schemas/User'
+        '422':
+          description: Erro de validação
+        '500':
+          description: Erro interno
