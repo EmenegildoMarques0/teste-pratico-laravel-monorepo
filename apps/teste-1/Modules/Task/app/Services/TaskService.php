@@ -18,7 +18,7 @@ class TaskService
 
     public function listTasks($status = null)
     {
-        $userId = Auth::id() ?? 1;
+        $userId = Auth::id() ??  9;
         return $this->repository->allByUser($userId, $status);
     }
 
@@ -27,7 +27,7 @@ class TaskService
         DB::beginTransaction();
 
         try {
-            $data['user_id'] = Auth::id() ?? 1;
+            $data['user_id'] = Auth::id() ?? 9;
             $task = $this->repository->create($data);
             DB::commit();
 
@@ -44,7 +44,7 @@ class TaskService
         DB::beginTransaction();
 
         try {
-            $task = $this->repository->updateStatus($id, Auth::id() ?? 1, $status);
+            $task = $this->repository->updateStatus($id, Auth::id() ?? 9, $status);
             DB::commit();
 
             return $task;
@@ -60,7 +60,7 @@ class TaskService
         DB::beginTransaction();
 
         try {
-            $this->repository->delete($id, Auth::id() ?? 1);
+            $this->repository->delete($id, Auth::id() ?? 9);
             DB::commit();
 
             return true;

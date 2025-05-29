@@ -1,0 +1,56 @@
+openapi: 3.0.0
+info:
+  title: API de Teste
+  description: Documentação da API do projeto Teste
+  version: 1.0.0
+  contact:
+    name: Suporte
+    email: suporte@exemplo.com
+
+servers:
+  - url: http://localhost/api
+    description: Servidor local
+
+tags:
+  - name: Usuários
+    description: API para gerenciamento de usuários
+
+paths:
+  /users:
+    get:
+      tags:
+        - Usuários
+      summary: Listar todos os usuários
+      responses:
+        '200':
+          description: Lista de usuários
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: João Silva
+        email:
+          type: string
+          example: joao@example.com
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
